@@ -1,0 +1,126 @@
+ctrl+alt+t 					#open new terminal
+
+#Info
+pwd							#check in which folder you are
+whoami						#shows your name
+cpuinfo						#shows all info about cpu, processors, threading, etc…
+cat /proc/cpuinfo   		# if above doesnt work
+
+
+#Help yourself
+man command					#shows manual page for command you enter (ex: man ls)
+command --help				#shows how command can be used (ex: ls --help)
+
+
+#Directories and files
+ls							#list folders where you are
+ls -a						#list hidden files as well
+cd							#change to home directory
+cd directoryname			#change to directory
+cd ..						#out of folder one level
+mkdir directoryname			#make new folder/directory
+rmdir directoryname			#delete folder/directory (only works for empty folder)
+rm directoryname			#delete folder/directory and files in folder
+rm -r directoryname			#deletes only folders inside directory
+touch filename				#create file, (include file format, ex: new.txt)
+cp filename directory/path	#copy file to new location
+mv filename directory/path	#move file to new location
+mv filename filename		#rename file (ex: mv new.txt newer.txt)
+locate filename				#locate a file ...search
+locate -i word				#locate files containing the word
+locate -i *word1*word2*		#locate files containing the words
+
+
+#chmod:						#set permissions to files:
+chmod +rwx filename 		#-to add permissions.
+chmod -rwx directoryname 	#-to remove permissions.
+chmod +x filename 			#-to allow executable permissions.
+chmod -wx filename 			#-to take out write and executable permissions.
+chmod g+rwx filename		#-add g, u, o, a before to change for group, users, others or all
+
+lsof | grep whatProcessYouwantToLookFor
+kill -9 IdofProcessThatIsStuck
+
+sudo passwd 				#change root password
+sudo apt-get install git 	#install ex git
+
+
+#Miscellaneous
+echo whaToPrintInTerminal	#print in terminal window what you write
+cat 						#show contents of file
+
+
+#Check processors and hyperthreading: https://www.binarytides.com/linux-check-processor/
+cat /proc/cpuinfo | grep -i 'core id'
+cat /proc/cpuinfo | grep -i 'processor'
+cat /proc/cpuinfo | grep -i 'physical id' | uniq
+watch -n 0.1 "cat /proc/cpuinfo | grep -i mhz"
+
+
+sudo apt-get install hwloc	# diagram showing cores, hyperthreads and cache size
+hwloc              			#not working??
+
+
+
+
+%GIT  https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
+%First time on new PC:
+sudo apt-get install git
+git config --global user.name username
+git config --global user.email youremail@email.com
+mkdir git
+cd git
+mkdir g
+cd g
+
+
+%New repository/project
+git init gitnewfoldername
+cd gitnewfoldername/
+gedit README
+git add README
+git commit -m "commit message"
+#->NOW add new repository with same name manually on the web github->gste-git->passwd
+
+#Put files into new repository on web:
+git remote add origin https://github.com/gste-git/gitnewfoldername.git
+git push -u origin master
+git status
+
+#Add or update files to existing repository:
+cd git/g/existingfolder   		(make sure new/updated file is in the chosen folder)
+git add newOrOldFile.format  		or git add -A to add all files in rep
+git commit -m "commit message"
+git push -u origin master
+
+#Clone from web to existing repository:
+cd git/g/whereYouwantyourRepo
+git clone adressFromWeb 
+
+
+#Delete commit history in a branch, and only leave the latest updated
+git checkout --orphan latest_branch
+git add -A
+git commit -am "commit message"
+git branch -D master
+git branch -m master
+git push -f origin master
+
+
+
+#Download Julia at julialang.org - find last stable version
+cd
+cd Downloads
+tar -xvzf julia-1.5.4-linux-x86_64.tar.gz
+sudo mv julia-1.5.4/ /opt/
+sudo ln -s /opt/julia-1.5.4/bin/julia /usr/local/bin/julia
+julia
+]
+add Plot
+exit()
+→in VScode File→Preferences→Settings→Extensjons→Julia setExecutablePath to above usr/local/bin/julia
+
+
+#Bashrc file
+gedit ~/.bashrc
+add at end of file-> PS1='\W: '  to not show entire path in terminal
